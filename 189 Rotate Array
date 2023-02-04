@@ -1,7 +1,7 @@
 /**
 Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 */
-
+Solution 1:
 class Solution {
     public void rotate(int[] arr, int k) {
         int k1=k%arr.length;
@@ -31,5 +31,28 @@ class Solution {
                 arr[i]=part2[l++];
             }
         }
+    }
+}
+
+Solution 2:
+//Using reversal algo, time complexity=O(n),space complexity=O(1)
+class Solution {
+    void reverse(int[] arr, int start, int end)
+    {
+        while(start<=end)
+        {
+            int temp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            end--;
+            start++;
+        }
+    }
+    public void rotate(int[] arr, int k) {
+        k=k%arr.length;
+        int n=arr.length-k;
+        reverse(arr,0,n-1);
+        reverse(arr,n,arr.length-1);
+        reverse(arr,0,arr.length-1);
     }
 }
