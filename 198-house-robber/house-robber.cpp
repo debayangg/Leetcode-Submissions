@@ -2,16 +2,26 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         int n=nums.size();
-        int arr[n];
-        arr[0]=nums[0];
+        int v1=0,v2=0,v3=0,curr=0;
+        v1=nums[0];
+        curr=v1;
         if(n>1)
-        arr[1]=max(nums[0],nums[1]);
+        {
+            v2=max(nums[0],nums[1]);
+            curr=v2;
+        }
         if(n>2)
-        arr[2]=max(nums[2]+nums[0],nums[1]);
+        {
+            v3=max(nums[2]+nums[0],nums[1]);
+            curr=v3;
+        }
         for(int i=3;i<n;i++)
         {
-            arr[i]=max(arr[i-1],max(nums[i]+arr[i-2],nums[i]+arr[i-3]));
+            curr=max(v3,max(nums[i]+v2,nums[i]+v1));
+            v1=v2;
+            v2=v3;
+            v3=curr;
         }
-        return arr[n-1];
+        return curr;
     }
 };
