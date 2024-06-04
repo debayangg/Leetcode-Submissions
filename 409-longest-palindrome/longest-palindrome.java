@@ -17,12 +17,7 @@ class Solution {
         int count=0;
         for(char ch : m.keySet())
         {
-            int val=m.get(ch);
-            while(val>1)
-            {
-                val-=2;
-                count+=2;
-            }
+            count+=2*(m.get(ch)/2);
         }
         if(n>count)
         {
