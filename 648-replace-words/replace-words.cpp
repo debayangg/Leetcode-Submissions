@@ -1,37 +1,34 @@
 class Solution {
 public:
-    string replaceWords(vector<string>& dictionary, string sentence) {
-        string wd="",ans="",ret="";
-        sort(dictionary.begin(),dictionary.end(),
-        [](const string &a,const string &b) -> bool {
-            if(a.compare(b)<0)
-            return true;
-            else
-            return false;
-        });
-        for(int i=0;i<sentence.size();i++)
-        {
-            if(sentence[i]!=' ')
-            {
-                wd+=sentence[i];
-                if(binary_search(dictionary.begin(),dictionary.end(),wd) && !ans.size())
-                ans=wd;
-            }
-            else
-            {
-                if(ans.size()>0)
-                ret+=ans+" ";
-                else
-                ret+=wd+" ";
-                wd="";
-                ans="";
-            }
-        }
-        if(ans.size()>0)
-        ret+=ans;
-        else
-        ret+=wd;
+    string replaceWords(vector<string> &dictionary, string sentence) {
+        set<string> st;
+        string word="",ans="";
+        sentence += ' ';
 
-        return ret;
+        for(auto i: dictionary) 
+            st.insert(i);
+
+        for(auto i: sentence)
+        {
+            if(i==' ')
+            {
+                if(ans.size()>0) ans += ' ';
+
+                string temp = "";
+                for(auto j: word)
+                {
+                    temp += j;
+                    if(st.count(temp)) 
+                    {
+                        break;
+                    }
+                }
+                ans += temp;
+                word = "";
+            } 
+            else word += i;
+        }
+
+        return ans;
     }
 };
