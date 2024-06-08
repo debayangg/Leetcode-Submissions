@@ -7,7 +7,7 @@ public:
         {
             sum+=nums[i];
             if(sum%k==0 && i>0)return true;
-            if(!m[sum%k])
+            else if(!m[sum%k])
             m[sum%k]=i+1;
             else if(i-m[sum%k]>0)
             return true;
