@@ -1,8 +1,7 @@
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
-        vector<int> num;
-        map<long long,int> m;
+        unordered_map<long long,int> m;
         long long sum=0;
         for(int i=0;i<nums.size();i++)
         {
