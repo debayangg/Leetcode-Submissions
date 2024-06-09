@@ -6,7 +6,7 @@ public:
         for(int i = 0; i < nums.size(); i++) {
             sum = (sum + nums[i]) % k;
             if(sum < 0) sum += k;
-            if(prefix_map.find(sum) != prefix_map.end()) {
+            if(prefix_map[sum]) {
                 ans += prefix_map[sum];
                 prefix_map[sum]++;
             } else {
