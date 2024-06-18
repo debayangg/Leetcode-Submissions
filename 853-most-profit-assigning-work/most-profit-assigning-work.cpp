@@ -19,8 +19,6 @@ public:
                 advance(en,mx);
                 ans+=(arr[i].first)*(distance(it,en)+1);
                 mx=distance(worker.begin(),it)-1;
-                cout<<i<<" "<<*it<<" "<<mx<<endl;
-                cout<<ans<<endl;
             }
         }
         return ans;
