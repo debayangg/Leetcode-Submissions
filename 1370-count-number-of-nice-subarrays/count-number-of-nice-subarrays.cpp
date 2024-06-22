@@ -13,10 +13,10 @@ public:
             m[vec[i]]++;
         }
         int sum=0;
-        for(int i=0;i<n;i++)
+        for(auto i:m)
         {
-            if(m[vec[i]-k])
-            sum+=m[vec[i]-k];
+            if(m[i.first-k])
+            sum+=m[i.first-k]*i.second;
         }
         return sum;
     }
