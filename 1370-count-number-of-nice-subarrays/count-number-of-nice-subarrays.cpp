@@ -2,7 +2,8 @@ class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
         int n=nums.size();
-        vector<int> vec(n+1);
+        int vec[n+1];
+        fill(vec,vec+n+1,0);
         int prev=0;
         vec[0]=1;
         int sum=0;
