@@ -3,7 +3,7 @@ public:
     int numberOfSubarrays(vector<int>& nums, int k) {
         int n=nums.size();
         vector<int> vec(n);
-        map<int,int> m;
+        unordered_map<int,int> m;
         m[0]=1;
         vec[0]=(nums[0]%2==1);
         m[vec[0]]++;
