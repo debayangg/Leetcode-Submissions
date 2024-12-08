@@ -27,7 +27,8 @@ public:
                 {
                     if(!(bitmask&(1<<j)))
                     {
-                        dp[i][bitmask|(1<<j)]=min(dp[i][bitmask|(1<<j)],int(ceil((double)strength[j]/(X+(i-1)*K))) + dp[i-1][bitmask]);
+                        int curr_X=X+(i-1)*K;
+                        dp[i][bitmask|(1<<j)]=min(dp[i][bitmask|(1<<j)],(strength[j]+curr_X-1)/curr_X + dp[i-1][bitmask]);
                     }
                 }
             }
