@@ -16,20 +16,20 @@ public:
         int X=1;
         for(int i=1;i<=n;i++)
         {
-            vector<int> vec;
             for(int j=0;j<(1<<n);j++)
             {
-                if(dp[i-1][j]!=INT_MAX)vec.push_back(j);
-            }
-            for(int bitmask:vec)
-            {
-                for(int j=0;j<n;j++)
+                if(dp[i-1][j]!=INT_MAX)
                 {
+                    int bitmask = j;
+                    for(int j=0;j<n;j++)
+                    {
                     if(!(bitmask&(1<<j)))
                     {
                         int curr_X=X+(i-1)*K;
-                        dp[i][bitmask|(1<<j)]=min(dp[i][bitmask|(1<<j)],(strength[j]+curr_X-1)/curr_X + dp[i-1][bitmask]);
+                        int new_bitmask = (bitmask|(1<<j));
+                        dp[i][new_bitmask]=min(dp[i][new_bitmask],(strength[j]+curr_X-1)/curr_X + dp[i-1][bitmask]);
                     }
+                }
                 }
             }
         }
