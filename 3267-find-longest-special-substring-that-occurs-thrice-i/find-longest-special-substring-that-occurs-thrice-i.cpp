@@ -25,15 +25,9 @@ public:
         {
             char ch=id.first;
             map<int,int> mp1=id.second;
-            vector<int> l;
             int last = mp1.rbegin()->first;
 
-            for(int i=last;i>=1;i--)
-            {
-                l.push_back(i);
-            }
-
-            for(int x:l)
+            for(int x=last;x>=1;x--)
             {
                 int occurence = mp1[x];
                 for(int i=x-1;i>=1;i--)
