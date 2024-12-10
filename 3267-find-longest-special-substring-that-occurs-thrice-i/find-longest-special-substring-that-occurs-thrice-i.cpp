@@ -26,9 +26,9 @@ public:
             char ch=id.first;
             map<int,int> mp1=id.second;
             vector<int> l;
-            pair<int,int> last=*(mp1.rbegin());
+            int last = mp1.rbegin()->first;
 
-            for(int i=last.first;i>=1;i--)
+            for(int i=last;i>=1;i--)
             {
                 l.push_back(i);
             }
