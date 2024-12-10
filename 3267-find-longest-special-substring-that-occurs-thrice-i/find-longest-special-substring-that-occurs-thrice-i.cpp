@@ -4,7 +4,7 @@ public:
     {
         int n=s.size();
         map<char,map<int,int>> mp;
-        vector<int> ans;
+        int ans=0;
         int cnt=1;
         for(int i=1;i<s.size();i++)
         {
@@ -36,12 +36,11 @@ public:
                 }
                 if(occurence>2)
                 {
-                    ans.push_back(x);
+                    ans=max(ans,x);
                     break;
                 }
             }
         }
-        sort(ans.rbegin(),ans.rend());
-        return (ans.size())?ans[0]:-1;
+        return (ans==0)?-1:ans;
     }
 };
