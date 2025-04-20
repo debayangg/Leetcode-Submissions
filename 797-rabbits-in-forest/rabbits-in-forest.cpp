@@ -13,7 +13,6 @@ public:
                 mp[answers[i]]=1;
             }
         }
-        cout<<cnt<<endl;
         for(auto id:mp)
         {
             if(id.second>0 && id.first)
