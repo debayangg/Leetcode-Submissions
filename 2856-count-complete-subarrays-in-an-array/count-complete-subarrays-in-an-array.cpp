@@ -21,11 +21,11 @@ public:
 
             if(cnt==dis)
             {
-                cout<<i<<" "<<j<<endl;
-                for(auto id:mp)
-                {
-                    cout<<id.first<<" "<<id.second<<endl;
-                }
+                // cout<<i<<" "<<j<<endl;
+                // for(auto id:mp)
+                // {
+                //     cout<<id.first<<" "<<id.second<<endl;
+                // }
                 dis1+=n-j;
                 if(mp[nums[i]]==1)cnt--;
                 mp[nums[i]]--;
