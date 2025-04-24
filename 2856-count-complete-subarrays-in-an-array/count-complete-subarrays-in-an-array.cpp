@@ -3,7 +3,7 @@ public:
     int countCompleteSubarrays(vector<int>& nums) 
     {
         int n=nums.size(), cnt=0, dis=0, dis1=0;
-        set<int> s;
+        unordered_set<int> s;
         map<int,int> mp;
         for(int i=0;i<n;i++)
         {
