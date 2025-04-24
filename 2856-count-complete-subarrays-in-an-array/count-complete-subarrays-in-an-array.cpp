@@ -4,7 +4,7 @@ public:
     {
         int n=nums.size(), cnt=0, dis=0, dis1=0;
         unordered_set<int> s;
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         for(int i=0;i<n;i++)
         {
             s.insert(nums[i]);
