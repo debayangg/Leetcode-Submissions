@@ -14,12 +14,8 @@ public:
             btm[bottoms[i]]++;
             if(!(tops[i]==a || bottoms[i]==a))a=0;
             if(!(tops[i]==b || bottoms[i]==b))b=0;
-            if(a==0 && b==0){
-                flag=true;
-                break;
-            }
         }
-        if(flag)return -1;
+        if(a==0 && b==0)return -1;
 
         val=(a!=0)?a:b;
         if(val==0)
