@@ -2,8 +2,7 @@ class Solution {
 public:
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) 
     {
-        unordered_map<int,int> top;
-        unordered_map<int,int> btm;
+        vector<int> top(10),btm(10);
         int n=tops.size();
         int val=0,a=tops[0],b=bottoms[0];
         top[tops[0]]++;
