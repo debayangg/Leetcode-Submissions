@@ -2,9 +2,9 @@ class Solution {
 public:
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) 
     {
-        map<int,set<int>> mp;
-        map<int,int> top;
-        map<int,int> btm;
+        unordered_map<int,set<int>> mp;
+        unordered_map<int,int> top;
+        unordered_map<int,int> btm;
         int n=tops.size();
         for(int i=0;i<n;i++)
         {
