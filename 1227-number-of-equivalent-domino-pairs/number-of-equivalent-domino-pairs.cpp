@@ -8,7 +8,6 @@ public:
         {
             int a=dominoes[i][0], b=dominoes[i][1];
             mp[{a,b}]++;
-            cout<<a<<" "<<b<<" "<<mp[{a,b}]<<endl;
             s.insert({a,b});
         }
         int cnt=0;
@@ -19,8 +18,6 @@ public:
             x=mp[val]+mp[{val.second,val.first}];
             else
             x=mp[val];
-            cout<<val.first<<" "<<val.second<<endl;
-            cout<<x<<endl;
             cnt+=x*(x-1);
             mp[val]=0;
             mp[{val.second,val.first}]=0;
