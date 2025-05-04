@@ -1,27 +1,17 @@
 class Solution {
 public:
-    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
-        set<pair<int,int>> s;
-        map<pair<int,int>,int> mp;
-        int n=dominoes.size();
-        for(int i=0;i<n;i++)
+    int numEquivDominoPairs(vector<vector<int>>& dominoes) 
+    {
+        map<vector<int>,int>m;
+        int ans=0;
+        for(int i=0; i<dominoes.size(); i++)
         {
-            int a=dominoes[i][0], b=dominoes[i][1];
-            mp[{a,b}]++;
-            s.insert({a,b});
+            sort(dominoes[i].begin(),dominoes[i].end());
+            ans+=m[dominoes[i]];
+            m[dominoes[i]]++;
         }
-        int cnt=0;
-        for(pair<int,int> val:s)
-        {
-            int x;
-            if(val.first!=val.second)
-            x=mp[val]+mp[{val.second,val.first}];
-            else
-            x=mp[val];
-            cnt+=x*(x-1);
-            mp[val]=0;
-            mp[{val.second,val.first}]=0;
-        }
-        return cnt/2;
+        return ans;
+        
+        
     }
 };
