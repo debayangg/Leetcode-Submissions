@@ -27,12 +27,9 @@ public:
         for(pair<int,int> x:right)
         {
             int a=x.first, b=x.second;
-            cout<<a<<" "<<b<<endl;
             for(int i=a;i<=b;i++)
             dominoes[i]='R';
         }
-        for(int x:s)cout<<x<<" ";
-        cout<<endl;
         bool flag=false;
 
         for(int i=n-1;i>=0;i--)
