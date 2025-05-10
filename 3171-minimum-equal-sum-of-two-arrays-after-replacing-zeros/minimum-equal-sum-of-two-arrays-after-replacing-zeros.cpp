@@ -52,20 +52,9 @@ public:
         //     }
         //     else mn2+=i;
         // }
-        if(cnt1 && cnt2)
-        {
-            return max(mn1,mn2);
-        }
-        else if(cnt1==0 && cnt2)
-        {
-            if(mn1>=mn2)return mn1;
-            else return -1;
-        }
-        else if(cnt2==0 && cnt1)
-        {
-            if(mn2>=mn1)return mn2;
-            else return -1;
-        }
-        else return (mn1==mn2)?(mn1):-1;
+        if((cnt1==0 && mn2>mn1) || (cnt2==0 && mn1>mn2))
+        return -1;
+
+        return max(mn1,mn2);
     }
 };
