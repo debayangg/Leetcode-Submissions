@@ -4,40 +4,39 @@ public:
         long long mn1=0,mn2=0, n1=nums1.size(), n2=nums2.size();
         int cnt1=0 , cnt2=0;
         bool f1=true, f2=true;
-        for(int i=0,j=0;i<n1 && j<n2;)
-        {
-            if(!(f1 || f2))break;
-            if(f1)
-            {
-                if(nums1[i]==0)
-                {
-                    cnt1++;
-                    mn1+=1;
-                }
-                else mn1+=nums1[i];
-                i++;
-            }
-            if(f2)
-            {
-                if(nums2[j]==0)
-                {
-                    cnt2++;
-                    mn2+=1;
-                }
-                else mn2+=nums2[j];
-                j++;
-            }
-            if(i==n1)
-            {
-                i--;
-                f1=false;
-            }
-            if(j==n2)
-            {
-                j--;
-                f2=false;
-            }
+        auto it1=nums1.begin();
+        auto it2=nums2.begin();
+        while (it1 != nums1.end() && it2 != nums2.end()) {
+    if (!(f1 || f2)) break;
+
+    if (f1) {
+        if (*it1 == 0) {
+            cnt1++;
+            mn1 += 1;
+        } else {
+            mn1 += *it1;
         }
+        ++it1;
+        if (it1 == nums1.end()) {
+            --it1;
+            f1 = false;
+        }
+    }
+
+    if (f2) {
+        if (*it2 == 0) {
+            cnt2++;
+            mn2 += 1;
+        } else {
+            mn2 += *it2;
+        }
+        ++it2;
+        if (it2 == nums2.end()) {
+            --it2;
+            f2 = false;
+        }
+    }
+}
         // cout<<mn1<<" "<<cnt1<<endl;
         // cout<<mn2<<" "<<cnt2<<endl;
         // for(int i:nums1)
