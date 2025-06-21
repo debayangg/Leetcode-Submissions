@@ -20,16 +20,13 @@ class Solution {
             int startFreq = freqs.get(left);
             int endFreq = startFreq + k;
 
-            // Find right boundary of the window where freq ≤ startFreq + k
             int right = left;
             while (right < n && freqs.get(right) <= endFreq) {
                 right++;
             }
 
-            // Delete everything before 'left' completely
             int deleteLeft = prefixSum[left];
 
-            // Delete the part beyond (startFreq + k) from elements after 'right - 1'
             int deleteRight = 0;
             for (int i = right; i < n; i++) {
                 deleteRight += freqs.get(i) - endFreq;
