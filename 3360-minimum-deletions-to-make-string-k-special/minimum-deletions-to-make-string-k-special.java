@@ -6,30 +6,36 @@ class Solution {
         }
 
         List<Integer> freqs = new ArrayList<>(freqMap.values());
-        Collections.sort(freqs);  // O(m log m), m ≤ 26
+        Collections.sort(freqs);  // Sorted frequencies
 
-        int totalChars = 0;
-        for (int f : freqs) totalChars += f;
+        int n = freqs.size();
+        int[] prefixSum = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + freqs.get(i);
+        }
 
         int minDeletions = Integer.MAX_VALUE;
 
-        for (int i = 0; i < freqs.size(); i++) {
-            int maxAllowed = freqs.get(i) + k;
+        for (int left = 0; left < n; left++) {
+            int startFreq = freqs.get(left);
+            int endFreq = startFreq + k;
 
-            int deletions = 0;
-            // Delete all frequencies before i entirely (cannot increase them)
-            for (int j = 0; j < i; j++) {
-                deletions += freqs.get(j);
+            // Find right boundary of the window where freq ≤ startFreq + k
+            int right = left;
+            while (right < n && freqs.get(right) <= endFreq) {
+                right++;
             }
 
-            // Delete the extra part of all frequencies > maxAllowed
-            for (int j = i + 1; j < freqs.size(); j++) {
-                if (freqs.get(j) > maxAllowed) {
-                    deletions += freqs.get(j) - maxAllowed;
-                }
+            // Delete everything before 'left' completely
+            int deleteLeft = prefixSum[left];
+
+            // Delete the part beyond (startFreq + k) from elements after 'right - 1'
+            int deleteRight = 0;
+            for (int i = right; i < n; i++) {
+                deleteRight += freqs.get(i) - endFreq;
             }
 
-            minDeletions = Math.min(minDeletions, deletions);
+            minDeletions = Math.min(minDeletions, deleteLeft + deleteRight);
         }
 
         return minDeletions;
