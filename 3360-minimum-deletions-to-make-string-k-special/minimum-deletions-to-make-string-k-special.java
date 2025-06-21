@@ -1,26 +1,37 @@
 class Solution {
     public int minimumDeletions(String word, int k) {
-        HashMap<Character, Integer> freq = new HashMap<>();
+        HashMap<Character, Integer> freqMap = new HashMap<>();
         for (char c : word.toCharArray()) {
-            freq.put(c, freq.getOrDefault(c, 0) + 1);
+            freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
         }
 
-        List<Integer> freqs = new ArrayList<>(freq.values());
-        int ans = Integer.MAX_VALUE;
+        List<Integer> freqs = new ArrayList<>(freqMap.values());
+        Collections.sort(freqs);  // O(m log m), m ≤ 26
 
-        for (int target = 1; target <= 100000; target++) {
+        int totalChars = 0;
+        for (int f : freqs) totalChars += f;
+
+        int minDeletions = Integer.MAX_VALUE;
+
+        for (int i = 0; i < freqs.size(); i++) {
+            int maxAllowed = freqs.get(i) + k;
+
             int deletions = 0;
-            for (int f : freqs) {
-                if (f < target) {
-                    deletions += f; // delete all
-                } else if (f > target + k) {
-                    deletions += f - (target + k); // reduce to (target + k)
-                }
-                // else: f in [target, target + k] → do nothing
+            // Delete all frequencies before i entirely (cannot increase them)
+            for (int j = 0; j < i; j++) {
+                deletions += freqs.get(j);
             }
-            ans = Math.min(ans, deletions);
+
+            // Delete the extra part of all frequencies > maxAllowed
+            for (int j = i + 1; j < freqs.size(); j++) {
+                if (freqs.get(j) > maxAllowed) {
+                    deletions += freqs.get(j) - maxAllowed;
+                }
+            }
+
+            minDeletions = Math.min(minDeletions, deletions);
         }
 
-        return ans;
+        return minDeletions;
     }
 }
