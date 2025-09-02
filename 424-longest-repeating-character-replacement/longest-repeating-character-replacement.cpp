@@ -17,7 +17,7 @@ public:
                 mp[s[i]-'A']--;
                 i++;
             }
-                mx=max(mx,j-i+1);
+            mx=max(mx,j-i+1);
             j++;
         }
         return mx;
