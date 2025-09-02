@@ -1,26 +1,26 @@
 class Solution {
 public:
     int characterReplacement(string s, int k) {
-        map<char,int> mp;
+        vector<int> mp(28);
         int i=0,j=0,mx=0;
         int mx1=0;
         char mxi;
         while(j<s.size())
         {
-            int a = mp[s[j]];
+            int a = mp[s[j]-'A'];
             char c = s[j];
-            mp[s[j]]++;
+            mp[s[j]-'A']++;
 
-            if(mp[s[j]]>mx1)
+            if(mp[s[j]-'A']>mx1)
             {
-                mx1=mp[s[j]];
+                mx1=mp[s[j]-'A'];
                 mxi=s[j];
             }
             
             if(j-i+1-mx1>k)
             {
-                mp[s[i]]--;
-                if(s[i]==mxi)mx1=mp[s[i]];
+                mp[s[i]-'A']--;
+                if(s[i]==mxi)mx1=mp[s[i]-'A'];
                 i++;
             }
             else
