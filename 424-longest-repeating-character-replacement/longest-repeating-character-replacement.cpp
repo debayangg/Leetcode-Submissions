@@ -1,7 +1,7 @@
 class Solution {
 public:
     int characterReplacement(string s, int k) {
-        vector<int> mp(28);
+        int mp[28];
         int i=0,j=0,mx=0;
         int mx1=0;
         char mxi;
