@@ -17,10 +17,7 @@ public:
                 mp[s[i]-'A']--;
                 i++;
             }
-            else
-            {
                 mx=max(mx,j-i+1);
-            }
             j++;
         }
         return mx;
