@@ -1,14 +1,16 @@
 class Solution {
     public int[] sortArrayByParity(int[] nums) {
         int i=-1,j=0;
-        List<Integer> numsl = Arrays.stream(nums).boxed().collect(Collectors.toList());
-        for(;j<numsl.size();j++)
+        for(;j<nums.length;j++)
         {
-            if(numsl.get(j)%2==0)
+            if(nums[j]%2==0)
             {
-                Collections.swap(numsl,++i,j);
+                i++;
+                int tmp = nums[i];
+                nums[i]=nums[j];
+                nums[j]=tmp;
             }
         }
-        return numsl.stream().mapToInt(Integer::intValue).toArray();
+        return nums;
     }
 }
