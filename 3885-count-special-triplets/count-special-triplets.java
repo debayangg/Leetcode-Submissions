@@ -12,7 +12,7 @@ class Solution {
         mp1.put(nums[0],1L);
 
         long cnt=0;
-        System.out.println(mp2.get(0));
+        //System.out.println(mp2.get(0));
         for(int j=1;j<n;j++)
         {
             mp2.put(nums[j],mp2.get(nums[j])-1L);
