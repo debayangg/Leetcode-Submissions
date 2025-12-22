@@ -3,7 +3,7 @@ public:
     int minDeletionSize(vector<string>& strs) {
         int n = strs.size(), wn = strs[0].size();
         vector<int> check(n,0);
-        unordered_set<int> s;
+        int cnt=0;
         for(int i=0;i<wn;i++)
         {
             bool flag=true;
@@ -32,10 +32,10 @@ public:
             }
             else
             {
-                s.insert(val);
+                cnt++;
             }
             if(flag)break;
         }
-        return s.size();
+        return cnt;
     }
 };
