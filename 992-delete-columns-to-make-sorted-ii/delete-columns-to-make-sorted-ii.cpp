@@ -6,35 +6,26 @@ public:
         int cnt=0;
         for(int i=0;i<wn;i++)
         {
-            bool flag=true;
-            vector<int> checks;
+            bool flag=false;
             int val = -1;
             for(int j=1;j<n;j++)
             {
                 if(strs[j][i]<strs[j-1][i] && !check[j])
                 {
-                    flag=false;
-                    val = i;
+                    cnt++;
+                    flag=true;
                     break;
                 }
-                else if(strs[j][i]==strs[j-1][i])
-                {
-                    flag=false;
-                }
-                else
-                {
-                    checks.push_back(j);
-                }
             }
-            if(val==-1)
+            if(flag)  continue;
+            
+            for(int j=1;j<n;j++)
             {
-                for(int x:checks)check[x]=1;
+                if(strs[j][i]>strs[j-1][i])
+                {
+                    check[j]=1;
+                }
             }
-            else
-            {
-                cnt++;
-            }
-            if(flag)break;
         }
         return cnt;
     }
