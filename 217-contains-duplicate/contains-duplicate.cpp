@@ -6,8 +6,8 @@ public:
         for(int x:nums)
         {
             mp[x]++;
-            if(mp[x]>1)flag=true;
+            if(mp[x]>1)return true;
         }
-        return flag;
+        return false;
     }
 };
